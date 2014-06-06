@@ -17,7 +17,5 @@ public class Main {
 		dataBase.add(new DataDetail(900,BitSet.valueOf(new long[]{14})));
 		Apriori test=new Apriori(2, dataBase);
 		test.output();
-
 	}
-
 }

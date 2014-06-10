@@ -8,13 +8,30 @@ import java.util.Set;
  * @author jxy
  *
  */
-
 public class Key {
+	/**
+	 * 列名
+	 */
 	private String Name;
+	/**
+	 * 列的ID编号
+	 */
 	private int ID;
-	private boolean IsCategorical;//是否离散
+	/**
+	 * 是否离散
+	 */
+	private boolean IsCategorical;
+	/**
+	 * 可取值的集合，如果为离散，则这个变量无用
+	 */
 	private HashMap<String, Integer> Values;
+	/**
+	 * 每个值出现的次数
+	 */
 	private HashMap<Integer,Integer> Count; 
+	/**
+	 * 这个列出现的总次数
+	 */
 	private int CountAll;
 	public Key(String name,int id,boolean IsC)
 	{
@@ -38,6 +55,10 @@ public class Key {
 		add_value(vs);
 		CountAll=0;
 	}
+	/**
+	 * 增加一组可取值
+	 * @param vs 可取值的集合
+	 */
 	private void add_value(String[] vs)
 	{
 		if(vs==null)return;
@@ -46,6 +67,10 @@ public class Key {
 			add_value(v);
 		}
 	}
+	/**
+	 * 增加一个可取值
+	 * @param v 可取值
+	 */
 	private void add_value(String v)
 	{
 		if(Values.containsKey(v))return;
@@ -60,6 +85,11 @@ public class Key {
 	{
 		return ID;
 	}
+	/**
+	 * 获得这个可取值对应的内部编号
+	 * @param v 可取值的Strig
+	 * @return	内部编号
+	 */
 	public int get_value(String v)
 	{
 		return Values.get(v);
@@ -68,6 +98,10 @@ public class Key {
 	{
 		return IsCategorical;
 	}
+	/**
+	 * 增加一个i的计数
+	 * @param i 可取值的内部编号
+	 */
 	public void add_Count(int i)
 	{
 		Count.put(i, Count.get(i)+1);

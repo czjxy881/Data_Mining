@@ -1,7 +1,11 @@
 package C8;
 
 import java.util.HashMap;
-
+/**
+ * 测试类
+ * @author jxy
+ *
+ */
 public class Main {
 	public static String[] names=new String[]{"age","income","student","credit_rating","buys_computer"};
 	public static HashMap<String,String> init(String[] vs)

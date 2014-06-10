@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+    	<property name="windowtitle" value="Data_Ming report" /> 
+    	<property name="overview" value="src/overview.html" />  
+        <javadoc access="private" overview="${overview}" windowtitle="${windowtitle}" additionalparam=" -encoding UTF-8 -charset UTF-8" author="true" classpath="." destdir="doc" doctitle="数据挖掘实验源代码文档" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="C8,C10,C6" source="1.7" sourcepath="src" splitindex="true" use="true" version="true">
+            <link href="file:/Users/jxy/eclipse_project/Data_Mining/doc/"/>
+        </javadoc>
+    </target>
+</project>

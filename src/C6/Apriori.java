@@ -11,15 +11,29 @@ import java.util.Vector;
  * @author jxy
  *
  */
-
 public class Apriori {
-	private double MIN_SUP;//最小支持度阀值
-	private DataBase Data; //源数据
+	/**
+	 * 最小支持度阀值
+	 */
+	private double MIN_SUP;
+	/**
+	 * 源数据
+	 */
+	private DataBase Data;
+	/**
+	 * 最大列号
+	 */
 	private int Max_ID;
+	/**
+	 * 记录最大项数的频繁项集的项数
+	 */
 	public int List_Num;
+	/**
+	 * 各个项数的频繁项集的集合
+	 */
 	public Vector<HashMap<BitSet, Integer> > num;
 	/**
-	 * 构造函数
+	 * 传入最小支持阀度，和预处理后的数据仓库即可自动寻找到频繁模式
 	 * @param min_sup 最小支持度阀值
 	 * @param dataBase 数据仓库
 	 */
@@ -51,7 +65,9 @@ public class Apriori {
 		}
 		return ans;
 	}
-	@SuppressWarnings("unchecked")
+	/**
+	 * 算法主内容
+	 */
 	private void solve()
 	{
 		HashMap<BitSet, Integer> now=new HashMap<BitSet, Integer>();
@@ -65,6 +81,9 @@ public class Apriori {
 		num.add(null);
 		num.add(1,(HashMap<BitSet, Integer>) now.clone()); //必须clone，当心浅复制
 		int last=1;
+		/**
+		 * 根据算法进行连接，剪枝，迭代
+		 */
 		while(last<Max_ID&&num.size()>last&&num.get(last).size()!=0)
 		{
 			now.clear();
@@ -91,6 +110,9 @@ public class Apriori {
 		}
 		List_Num=last-1;
 	}
+	/**
+	 * 结果输出用，可以根据需要自定义
+	 */
 	public void output()
 	{
 		System.out.println("在最小支持阀度为"+String.valueOf(MIN_SUP)+"的情况下:");

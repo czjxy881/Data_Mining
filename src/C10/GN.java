@@ -1,16 +1,29 @@
 package C10;
 
 import java.util.Vector;
-
+/**
+ * GN算法，信息中心度参考论文10.1103/PhysRevE.70.056104
+ * @author jxy
+ *
+ */
 public class GN {
 	private Graph graph;
+	/**
+	 * 建图
+	 * @param g 分类图
+	 */
 	public GN(Graph g)
 	{
 		graph=g;
 	}
+	/**
+	 * 主算法，含Modularity剪枝
+	 * @return 划分结果的块数
+	 */
 	public int run()
 	{
 		double Q_Last=0; //上一次的Q值
+		int T=0;
 		int SumEdge=graph.get_EdgeNum();
 		while(graph.get_EdgeNum()!=0){
 			int m=graph.get_E();
@@ -24,6 +37,7 @@ public class GN {
 				Q_now+=(now[0]/(double)SumEdge+t*t);
 			}
 			graph.resume_test(m); //恢复删除
+			System.out.println(String.valueOf(T++)+" Last:"+String.valueOf(Q_Last)+" Now:"+String.valueOf(Q_now));
 			if(Q_now<=Q_Last){
 				break;
 			}
@@ -35,6 +49,9 @@ public class GN {
 		graph.paint();
 		return graph.get_divNum();
 	}
+	/**
+	 * 输出，可自定义
+	 */
 	public void output(){
 		int num=graph.get_divNum();
 		System.out.println("经过划分，分成"+String.valueOf(num)+"类:");

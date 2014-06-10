@@ -1,7 +1,11 @@
 package C6;
 
 import java.util.BitSet;
-
+/**
+ * 测试用
+ * @author jxy
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
